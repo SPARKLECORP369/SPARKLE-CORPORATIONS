@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioWave™ Stress Regulation Study</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        color: #222;
+    }
+    .header {
+        background: #003366;
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+    }
+    .container {
+        width: 85%;
+        margin: auto;
+        background: #fff;
+        padding: 30px;
+        margin-top: -20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+    }
+    h2 {
+        color: #003366;
+        margin-bottom: 10px;
+    }
+    .highlight {
+        background: #e7f4ff;
+        padding: 10px;
+        border-left: 5px solid #0077cc;
+        margin: 20px 0;
+        font-size: 15px;
+    }
+    .graph {
+        width: 100%;
+        background: #ddd;
+        height: 180px;
+        border-radius: 10px;
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>BioWave™ NeuroHaptic™ Study</h1>
+    <p>Conducted by the Georgia Research Institute of Wellness Technologies*</p>
+</div>
+
+<div class="container">
+
+    <h2>Objective</h2>
+    <p>To evaluate the effectiveness of NeuroHaptic™ and Predictive HRV Technology in reducing stress levels during high-pressure academic tasks.</p>
+
+    <h2>Method</h2>
+    <p>45 college participants (ages 18–24) performed timed cognitive tasks. Stress responses were recorded via HRV comparison during baseline vs. wearable intervention.</p>
+
+    <div class="highlight">
+        <strong>Result:</strong> Participants demonstrated an average HRV improvement of <strong>22% within 3 minutes</strong> of BioWave™ activation.
+    </div>
+
+    <div class="graph">Graph Placeholder — HRV Increase with NeuroHaptic™</div>
+
+    <h2>Conclusion</h2>
+    <p>BioWave™ provided measurable autonomic nervous system stabilization and faster recovery from acute stress triggers.</p>
+
+    <p style="font-size: 12px; color: #777;">
+    *This is a development study for R&D purposes, not yet peer-reviewed.
+    </p>
+
+</div>
+
+</body>
+</html>
