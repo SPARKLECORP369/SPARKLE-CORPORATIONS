@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sparkle Corporations | Study Details</title>
+
+<style>
+:root{
+  --accent:#00f5ff;
+  --bg:#02050a;
+  --panel:#061420;
+  --text:#eaf6ff;
+  --muted:#9fb1c7;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  background:#02050a;
+  color:var(--text);
+}
+
+main{
+  max-width:1000px;
+  margin:auto;
+  padding:80px 24px;
+}
+
+section{
+  background:linear-gradient(180deg,#050b14,#02050a);
+  border-radius:28px;
+  padding:48px 40px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 40px 120px rgba(0,0,0,.9);
+}
+
+h1{
+  font-size:36px;
+  background:linear-gradient(90deg,#eaffff,#7deeff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:16px;
+}
+
+h2{
+  font-size:22px;
+  margin-top:36px;
+  margin-bottom:10px;
+  color:#e7f2ff;
+}
+
+p{
+  font-size:16px;
+  line-height:1.9;
+  color:#c7d6ea;
+  margin-bottom:14px;
+}
+
+ul{
+  margin-left:20px;
+  margin-bottom:14px;
+}
+
+li{
+  margin-bottom:6px;
+}
+
+/* INFO GRID */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  margin:30px 0;
+}
+
+.info{
+  background:var(--panel);
+  border-radius:18px;
+  padding:22px;
+  border:1px solid #12304a;
+}
+
+.info span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.info strong{
+  display:block;
+  font-size:20px;
+  color:var(--accent);
+  margin-top:6px;
+}
+
+/* REVIEWS */
+.reviews{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  margin-top:24px;
+}
+
+.review{
+  background:#061420;
+  border-radius:20px;
+  padding:22px;
+  border:1px solid #12304a;
+}
+
+.review p{
+  font-size:15px;
+  color:#d6e6ff;
+}
+
+.review span{
+  display:block;
+  margin-top:10px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* FOOTNOTE */
+.note{
+  margin-top:40px;
+  font-size:13px;
+  color:#8ea2bd;
+}
+</style>
+</head>
+
+<body>
+
+<main>
+<section>
+
+<h1>BioWave™ Study — Detailed Evaluation</h1>
+
+<p>
+This page provides a detailed breakdown of how the BioWave™ stress regulation
+study was conducted, the student population involved, and qualitative feedback
+collected from participants during the evaluation phase.
+</p>
+
+<!-- SNAPSHOT -->
+<div class="info-grid">
+  <div class="info"><span>Total Participants</span><strong>45 Students</strong></div>
+  <div class="info"><span>Age Group</span><strong>18–24 years</strong></div>
+  <div class="info"><span>Study Duration</span><strong>Single Session</strong></div>
+  <div class="info"><span>Primary Metric</span><strong>HRV</strong></div>
+</div>
+
+<h2>1. Student Population</h2>
+<p>
+The study involved <strong>45 undergraduate students</strong> from diverse academic
+backgrounds. Participants were actively enrolled in college and reported
+frequent academic stress related to examinations, deadlines, and performance
+pressure.
+</p>
+<p>
+Students with known cardiovascular, neurological, or autonomic disorders were
+excluded to avoid confounding physiological effects.
+</p>
+
+<h2>2. How the Study Was Conducted</h2>
+<p>
+The evaluation followed a <strong>within-subject design</strong>, meaning every student
+experienced both conditions:
+</p>
+<ul>
+  <li>Baseline condition (no wearable intervention)</li>
+  <li>BioWave™ active condition (NeuroHaptic™ stimulation enabled)</li>
+</ul>
+
+<p>
+Each participant underwent a controlled cognitive stress task designed to
+simulate real academic pressure. Tasks included timed mental arithmetic,
+memory challenges, and countdown-based performance prompts.
+</p>
+
+<h2>3. Measurement & Observation</h2>
+<p>
+Heart Rate Variability (HRV) was continuously monitored using a wrist-based
+sensor integrated into the BioWave™ prototype. HRV was chosen because it
+directly reflects autonomic nervous system balance and stress recovery.
+</p>
+
+<ul>
+  <li>Lower HRV indicated higher stress</li>
+  <li>Rising HRV indicated recovery and calming</li>
+</ul>
+
+<h2>4. Key Observations</h2>
+<ul>
+  <li>Average HRV increased by <strong>22%</strong> within three minutes of activation</li>
+  <li>Autonomic recovery occurred <strong>38% faster</strong> compared to baseline</li>
+  <li>Most participants showed improvement without conscious effort</li>
+</ul>
+
+<h2>5. Student Reviews & Feedback</h2>
+
+<div class="reviews">
+  <div class="review">
+    <p>
+      “I didn’t expect it to work this fast. I could feel myself calming down
+      without trying to control my breathing.”
+    </p>
+    <span>— 2nd Year Commerce Student</span>
+  </div>
+
+  <div class="review">
+    <p>
+      “Usually after stress tasks, it takes time to feel normal again.
+      With the band on, the recovery felt quicker and smoother.”
+    </p>
+    <span>— Engineering Undergraduate</span>
+  </div>
+
+  <div class="review">
+    <p>
+      “It didn’t distract me like phone apps do. I just focused on the task,
+      and later realised I wasn’t as tense.”
+    </p>
+    <span>— Final Year Arts Student</span>
+  </div>
+
+  <div class="review">
+    <p>
+      “The vibration felt subtle, not annoying. It felt more physical than
+      mental, which I liked.”
+    </p>
+    <span>— Business Administration Student</span>
+  </div>
+</div>
+
+<p class="note">
+This study was conducted as an internal exploratory evaluation for concept
+validation. Results are not intended for clinical diagnosis or treatment.
+BioWave™ is not a medical device.
+</p>
+
+</section>
+</main>
+
+</body>
+</html>
