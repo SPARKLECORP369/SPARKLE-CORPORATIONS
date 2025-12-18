@@ -1,261 +1,284 @@
-<div class="chart-wrapper cool-graph">
-    <div class="graph-header">
-        <h3>Autonomic Recovery Trajectory</h3>
-        <p>Comparison of HRV recovery following acute cognitive stress</p>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sparkle Corporations — BioWave™ Study</title>
 
-    <svg viewBox="0 0 800 420" width="100%" height="420">
+<style>
+:root{
+  --accent:#00f5ff;
+  --accent-soft:#00cfe6;
+  --bg:#05070b;
+  --card:#0b111a;
+  --text:#eaf6ff;
+  --muted:#9fb1c7;
+}
 
-        <!-- DEFINITIONS -->
-        <defs>
-            <linearGradient id="bioFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#00f5ff" stop-opacity="0.35"/>
-                <stop offset="100%" stop-color="#00f5ff" stop-opacity="0"/>
-            </linearGradient>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  background:radial-gradient(circle at top,#0c1624 0,#020308 45%,#000 100%);
+  color:var(--text);
+}
 
-            <linearGradient id="baseFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.25"/>
-                <stop offset="100%" stop-color="#ff6b6b" stop-opacity="0"/>
-            </linearGradient>
+/* LAYOUT */
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:60px 20px;
+}
 
-            <filter id="glow">
-                <feGaussianBlur stdDeviation="4" result="blur"/>
-                <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-            </filter>
-        </defs>
+/* STUDY GLASS */
+.study-shell{
+  position:relative;
+  padding:60px 0;
+}
+.study-shell::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(
+    400px at var(--glow-x,50%) var(--glow-y,50%),
+    rgba(0,245,255,.08),
+    transparent 60%
+  );
+  pointer-events:none;
+}
+.study-glass{
+  background:
+    radial-gradient(circle at top,#142030,#06090f 70%);
+  border-radius:30px;
+  padding:50px 40px;
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(22px);
+  box-shadow:0 40px 100px rgba(0,0,0,.85);
+}
 
-        <!-- GRID -->
-        <g stroke="#14263a" stroke-width="1">
-            <line x1="80" y1="340" x2="760" y2="340"/>
-            <line x1="80" y1="260" x2="760" y2="260"/>
-            <line x1="80" y1="180" x2="760" y2="180"/>
-            <line x1="80" y1="100" x2="760" y2="100"/>
-        </g>
+/* TYPOGRAPHY */
+h2{
+  font-size:28px;
+  margin-bottom:20px;
+  background:linear-gradient(90deg,#e9faff,#7deeff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+p{
+  font-size:15px;
+  line-height:1.9;
+  color:#b9c9dd;
+  margin-bottom:14px;
+}
+h3{
+  margin-top:30px;
+  font-size:17px;
+  color:#e7f2ff;
+}
 
-        <!-- AXES -->
-        <line x1="80" y1="60" x2="80" y2="340" stroke="#35506b" stroke-width="2"/>
-        <line x1="80" y1="340" x2="760" y2="340" stroke="#35506b" stroke-width="2"/>
+/* METRICS */
+.metric-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:14px;
+  margin:24px 0;
+}
+.metric-card{
+  background:#061420;
+  border-radius:16px;
+  padding:16px;
+  border:1px solid #1e3246;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+}
+.metric-card span{
+  font-size:11px;
+  color:var(--muted);
+}
+.metric-card strong{
+  display:block;
+  font-size:22px;
+  color:var(--accent);
+  margin-top:4px;
+}
 
-        <!-- LABELS -->
-        <g fill="#9fb1c7" font-size="12">
-            <text x="30" y="105">High</text>
-            <text x="30" y="185">HRV</text>
-            <text x="30" y="265">Low</text>
+/* GRAPH */
+.cool-graph{
+  margin-top:40px;
+  padding:26px;
+  border-radius:26px;
+  background:radial-gradient(circle at top,#0c1f33,#05070b 70%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.06),
+    0 30px 80px rgba(0,0,0,.8);
+}
+.graph-header h3{
+  font-size:18px;
+  margin-bottom:4px;
+}
+.graph-header p{
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:16px;
+}
 
-            <text x="140" y="370">0 min</text>
-            <text x="260" y="370">1</text>
-            <text x="380" y="370">2</text>
-            <text x="500" y="370">3</text>
-            <text x="620" y="370">4</text>
-            <text x="720" y="370">5</text>
-        </g>
+/* SVG ANIMATION */
+svg polyline{
+  stroke-dasharray:1200;
+  stroke-dashoffset:1200;
+  animation:drawLine 2.2s ease forwards;
+}
+@keyframes drawLine{to{stroke-dashoffset:0}}
 
-        <!-- BASELINE AREA -->
-        <path d="
-            M80 300
-            L200 295
-            L320 292
-            L440 290
-            L560 288
-            L680 286
-            L760 285
-            L760 340 L80 340 Z"
-            fill="url(#baseFill)"/>
+.graph-note{
+  margin-top:14px;
+  font-size:13px;
+  color:#a8bdd6;
+}
 
-        <!-- BIOWAVE AREA -->
-        <path d="
-            M80 300
-            L200 260
-            L320 220
-            L440 190
-            L560 160
-            L680 140
-            L760 130
-            L760 340 L80 340 Z"
-            fill="url(#bioFill)"/>
+/* SCROLL REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(30px) scale(.98);
+  transition:all .9s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.active{
+  opacity:1;
+  transform:none;
+}
+</style>
+</head>
 
-        <!-- BASELINE LINE -->
-        <polyline
-            points="80,300 200,295 320,292 440,290 560,288 680,286 760,285"
-            fill="none"
-            stroke="#ff6b6b"
-            stroke-width="2"
-            stroke-dasharray="6"/>
+<body>
 
-        <!-- BIOWAVE LINE -->
-        <polyline
-            points="80,300 200,260 320,220 440,190 560,160 680,140 760,130"
-            fill="none"
-            stroke="#00f5ff"
-            stroke-width="4"
-            filter="url(#glow)"/>
+<main>
+<section class="study-shell">
+<div class="study-glass reveal">
 
-        <!-- DATA POINTS -->
-        <g fill="#00f5ff">
-            <circle cx="200" cy="260" r="4"/>
-            <circle cx="320" cy="220" r="4"/>
-            <circle cx="440" cy="190" r="4"/>
-            <circle cx="560" cy="160" r="4"/>
-            <circle cx="680" cy="140" r="4"/>
-        </g>
+<h2>BioWave™ Stress Regulation Study</h2>
 
-        <!-- LEGEND -->
-        <g font-size="12">
-            <rect x="520" y="70" width="10" height="10" fill="#00f5ff"/>
-            <text x="540" y="79" fill="#cfefff">BioWave™ Active</text>
+<p>
+This internal exploratory study evaluated the effectiveness of the BioWave™
+NeuroHaptic™ system in accelerating physiological recovery from acute academic
+stress using Heart Rate Variability (HRV) as the primary biomarker.
+</p>
 
-            <rect x="520" y="90" width="10" height="10" fill="#ff6b6b"/>
-            <text x="540" y="99" fill="#cfefff">Baseline Recovery</text>
-        </g>
-
-        <!-- ANNOTATION -->
-        <text x="420" y="140" fill="#eaffff" font-size="14" font-weight="600">
-            +22% HRV improvement at 3 minutes
-        </text>
-
-    </svg>
-
-    <p class="graph-note">
-        BioWave™ demonstrates accelerated parasympathetic re-engagement compared
-        to natural recovery, with the largest divergence occurring within the
-        first three minutes post-stress.
-    </p>
+<div class="metric-grid">
+  <div class="metric-card"><span>Participants</span><strong>45</strong></div>
+  <div class="metric-card"><span>Age Range</span><strong>18–24</strong></div>
+  <div class="metric-card"><span>Design</span><strong>Within-Subject</strong></div>
+  <div class="metric-card"><span>HRV Gain</span><strong>22%</strong></div>
 </div>
 
-.cool-graph {
-    background:
-        radial-gradient(circle at top, #0c1f33, #05070b 70%);
-    border-radius: 22px;
-    padding: 24px;
-    box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.06),
-        0 25px 70px rgba(0,0,0,0.8);
-}
+<h3>Results Overview</h3>
+<p>
+BioWave™ activation produced faster parasympathetic re-engagement compared to
+natural recovery, with the largest divergence occurring within the first three
+minutes post-stress.
+</p>
 
-.graph-header h3 {
-    font-size: 18px;
-    margin-bottom: 4px;
-    color: #e9faff;
-}
-
-.graph-header p {
-    font-size: 13px;
-    color: #9fb1c7;
-    margin-bottom: 12px;
-}
-
-.graph-note {
-    font-size: 13px;
-    color: #a8bdd6;
-    margin-top: 12px;
-}
-
-.reveal {
-    opacity: 0;
-    transform: translateY(30px) scale(0.98);
-    transition: all 0.9s cubic-bezier(.2,.8,.2,1);
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-<script>
-const reveals = document.querySelectorAll('.reveal');
-
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, { threshold: 0.15 });
-
-reveals.forEach(r => observer.observe(r));
-</script>
-
-<div class="reveal">
-    <!-- graph / metrics / paragraphs -->
+<!-- GRAPH -->
+<div class="cool-graph reveal">
+<div class="graph-header">
+  <h3>Autonomic Recovery Trajectory</h3>
+  <p>HRV response following acute cognitive stress</p>
 </div>
 
-<strong data-count="22">0</strong>% HRV Gain
+<svg viewBox="0 0 800 420" width="100%" height="420">
+
+<defs>
+  <linearGradient id="bioFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#00f5ff" stop-opacity=".35"/>
+    <stop offset="100%" stop-color="#00f5ff" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="baseFill" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#ff6b6b" stop-opacity=".25"/>
+    <stop offset="100%" stop-color="#ff6b6b" stop-opacity="0"/>
+  </linearGradient>
+</defs>
+
+<!-- GRID -->
+<g stroke="#14263a">
+  <line x1="80" y1="340" x2="760" y2="340"/>
+  <line x1="80" y1="260" x2="760" y2="260"/>
+  <line x1="80" y1="180" x2="760" y2="180"/>
+  <line x1="80" y1="100" x2="760" y2="100"/>
+</g>
+
+<!-- AXES -->
+<line x1="80" y1="60" x2="80" y2="340" stroke="#35506b" stroke-width="2"/>
+<line x1="80" y1="340" x2="760" y2="340" stroke="#35506b" stroke-width="2"/>
+
+<!-- BASELINE AREA -->
+<path d="
+M80 300
+L200 295
+L320 292
+L440 290
+L560 288
+L680 286
+L760 285
+L760 340 L80 340 Z"
+fill="url(#baseFill)"/>
+
+<!-- BIOWAVE AREA -->
+<path d="
+M80 300
+L200 260
+L320 220
+L440 190
+L560 160
+L680 140
+L760 130
+L760 340 L80 340 Z"
+fill="url(#bioFill)"/>
+
+<!-- LINES -->
+<polyline
+points="80,300 200,295 320,292 440,290 560,288 680,286 760,285"
+fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="6"/>
+
+<polyline
+points="80,300 200,260 320,220 440,190 560,160 680,140 760,130"
+fill="none" stroke="#00f5ff" stroke-width="4"/>
+
+<!-- LEGEND -->
+<g font-size="12" fill="#cfefff">
+  <rect x="520" y="70" width="10" height="10" fill="#00f5ff"/>
+  <text x="536" y="79">BioWave™ Active</text>
+  <rect x="520" y="90" width="10" height="10" fill="#ff6b6b"/>
+  <text x="536" y="99">Baseline Recovery</text>
+</g>
+
+<text x="420" y="140" fill="#eaffff" font-size="14" font-weight="600">
++22% HRV improvement at 3 minutes
+</text>
+
+</svg>
+
+<p class="graph-note">
+BioWave™ shows accelerated autonomic recovery compared to natural baseline.
+</p>
+</div>
+
+</div>
+</section>
+</main>
+
 <script>
-document.querySelectorAll('[data-count]').forEach(el => {
-    const target = +el.dataset.count;
-    let count = 0;
-    const step = target / 40;
-
-    const interval = setInterval(() => {
-        count += step;
-        if (count >= target) {
-            el.textContent = target;
-            clearInterval(interval);
-        } else {
-            el.textContent = Math.round(count);
-        }
-    }, 25);
+/* GLOW FOLLOW */
+document.addEventListener('mousemove',e=>{
+  document.documentElement.style.setProperty('--glow-x',e.clientX+'px');
+  document.documentElement.style.setProperty('--glow-y',e.clientY+'px');
 });
+
+/* SCROLL REVEAL */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting)e.target.classList.add('active');
+  });
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
-.tooltip {
-    position: relative;
-    cursor: help;
-    border-bottom: 1px dotted #6bdcff;
-}
 
-.tooltip::after {
-    content: attr(data-tip);
-    position: absolute;
-    bottom: 140%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #0b1825;
-    color: #cfefff;
-    padding: 10px 12px;
-    border-radius: 10px;
-    font-size: 12px;
-    width: 240px;
-    opacity: 0;
-    pointer-events: none;
-    transition: .3s;
-    box-shadow: 0 12px 40px rgba(0,0,0,.7);
-}
-
-.tooltip:hover::after {
-    opacity: 1;
-}
-
-svg polyline {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: drawLine 2s ease forwards;
-}
-
-@keyframes drawLine {
-    to { stroke-dashoffset: 0; }
-}
-<script>
-document.addEventListener('mousemove', e => {
-    document.documentElement.style.setProperty(
-        '--glow-x', `${e.clientX}px`
-    );
-    document.documentElement.style.setProperty(
-        '--glow-y', `${e.clientY}px`
-    );
-});
-</script>
-.study-shell::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        400px at var(--glow-x) var(--glow-y),
-        rgba(0,245,255,0.08),
-        transparent 60%
-    );
-    pointer-events: none;
-}
-
+</body>
+</html>
