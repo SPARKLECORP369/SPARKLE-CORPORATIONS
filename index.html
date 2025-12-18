@@ -6,516 +6,283 @@
 <title>Sparkle Corporations — BioWave™ Stress Regulation Study</title>
 
 <style>
-    :root {
-        --bg-dark: #05070b;
-        --bg-card: #0d1117;
-        --accent: #00f5ff;
-        --accent-soft: #00a7e1;
-        --text-main: #f5f7fb;
-        --text-muted: #a5b3c6;
-        --border-soft: #1f2933;
-    }
+:root {
+    --bg-dark:#05070b;
+    --bg-card:#0d1117;
+    --accent:#00f5ff;
+    --accent-soft:#00a7e1;
+    --text-main:#f5f7fb;
+    --text-muted:#a5b3c6;
+    --border-soft:#1f2933;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:radial-gradient(circle at top,#0c1624 0,#020308 45%,#000 100%);
+    color:var(--text-main);
+    line-height:1.6;
+}
+a{color:var(--accent);text-decoration:none}
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+/* HEADER */
+header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(16px);
+    background:linear-gradient(to bottom,rgba(0,0,0,.85),rgba(0,0,0,.6));
+    border-bottom:1px solid var(--border-soft);
+}
+.nav{
+    max-width:1080px;margin:auto;
+    padding:10px 18px;
+    display:flex;justify-content:space-between;align-items:center;
+}
+.nav-left{display:flex;gap:10px;align-items:center}
+.nav-left img{
+    width:42px;height:42px;border-radius:50%;
+    border:1px solid #ffffff33;
+}
+.brand-name{
+    font-weight:700;font-size:13px;
+    letter-spacing:.14em;text-transform:uppercase;
+}
+.nav-links{display:flex;gap:18px;font-size:13px}
+.nav-links a{color:var(--text-muted)}
+.nav-links a:hover{color:var(--accent)}
 
-    body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        background: radial-gradient(circle at top, #0c1624 0, #020308 45%, #000000 100%);
-        color: var(--text-main);
-        line-height: 1.6;
-    }
+/* LAYOUT */
+main{max-width:1080px;margin:auto;padding:28px 18px}
 
-    a { color: var(--accent); text-decoration: none; }
+/* HERO */
+.hero{
+    display:grid;
+    grid-template-columns:1.25fr 1fr;
+    gap:32px;
+    margin-bottom:42px;
+}
+.hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:4px 10px;border-radius:999px;
+    background:#0b1825;border:1px solid #1d3246;
+    font-size:11px;letter-spacing:.16em;
+    color:var(--accent-soft);margin-bottom:10px;
+}
+.hero-tag .dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 10px var(--accent);
+}
+.hero-heading{font-size:30px;font-weight:700;margin-bottom:10px}
+.hero-subtitle{font-size:14px;color:var(--text-muted);margin-bottom:22px}
+.hero-actions{display:flex;gap:10px}
+.btn-primary,.btn-ghost{
+    padding:8px 14px;border-radius:999px;
+    font-size:13px;letter-spacing:.14em;
+    cursor:pointer;border:1px solid transparent;
+}
+.btn-primary{
+    background:linear-gradient(135deg,var(--accent-soft),var(--accent));
+    color:#021018;font-weight:600;
+    box-shadow:0 0 18px #00f5ff55;
+}
+.btn-ghost{
+    background:none;border-color:#283749;color:var(--text-main)
+}
+.hero-meta{font-size:12px;color:var(--text-muted);margin-top:14px}
+.hero-card{
+    background:radial-gradient(circle at top,#1a2636,#05070b);
+    border-radius:20px;padding:22px;
+    border:1px solid #263548;
+    box-shadow:0 18px 40px rgba(0,0,0,.75);
+}
+.hero-card img{width:100%;border-radius:20px}
 
-    /* Layout */
-    header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        backdrop-filter: blur(16px);
-        background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
-        border-bottom: 1px solid var(--border-soft);
-    }
+/* SECTIONS */
+section{
+    background:var(--bg-card);
+    border-radius:18px;
+    border:1px solid var(--border-soft);
+    padding:22px;
+    margin-bottom:22px;
+}
+section h2{font-size:18px;margin-bottom:10px}
+section p{font-size:14px;color:var(--text-muted);margin-bottom:10px}
+.highlight{
+    background:#071521;border-left:3px solid var(--accent);
+    padding:10px 12px;margin:16px 0;
+}
 
-    .nav {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 10px 18px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+/* METRICS */
+.metric-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:12px;margin:16px 0;
+}
+.metric-card{
+    background:#061420;border:1px solid #1e3246;
+    border-radius:14px;padding:12px;
+}
+.metric-card span{font-size:11px;color:var(--text-muted)}
+.metric-card strong{display:block;font-size:18px;color:var(--accent)}
 
-    .nav-left {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+/* TOGGLE */
+.toggle-group{display:flex;gap:8px;margin:14px 0}
+.toggle-btn{
+    padding:6px 12px;border-radius:999px;
+    background:#071521;border:1px solid #2a3b4e;
+    color:var(--text-muted);font-size:12px;
+    cursor:pointer;
+}
+.toggle-btn.active{
+    background:linear-gradient(135deg,var(--accent-soft),var(--accent));
+    color:#021018;font-weight:600;
+}
 
-    .nav-left img {
-        width: 42px;
-        height: 42px;
-        border-radius: 999px;
-        object-fit: cover;
-        border: 1px solid #ffffff33;
-    }
+/* CHART */
+.chart-wrapper{
+    background:#04101b;border:1px solid #1c3245;
+    border-radius:14px;padding:14px;margin-top:14px;
+}
 
-    .brand-name {
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        font-size: 13px;
-        text-transform: uppercase;
-        color: #e5ecff;
-    }
+/* ACCORDION */
+.accordion{border-top:1px solid #1f2933;margin-top:14px}
+.accordion button{
+    width:100%;background:none;border:none;
+    color:var(--text-main);padding:12px 0;
+    text-align:left;cursor:pointer;font-size:14px;
+}
+.accordion-content{display:none;font-size:13px;color:var(--text-muted)}
 
-    .nav-links {
-        display: flex;
-        gap: 18px;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-    }
-
-    .nav-links a {
-        color: var(--text-muted);
-    }
-
-    .nav-links a:hover {
-        color: var(--accent);
-    }
-
-    main {
-        max-width: 1080px;
-        margin: 0 auto;
-        padding: 28px 18px 40px;
-    }
-
-    /* Hero */
-    .hero {
-        display: grid;
-        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-        gap: 32px;
-        align-items: center;
-        margin-bottom: 42px;
-    }
-
-    .hero-heading {
-        font-size: 30px;
-        font-weight: 700;
-        line-height: 1.2;
-        margin-bottom: 10px;
-    }
-
-    .hero-subtitle {
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-bottom: 22px;
-    }
-
-    .hero-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: #0b1825;
-        border: 1px solid #1d3246;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        color: var(--accent-soft);
-        margin-bottom: 10px;
-    }
-
-    .hero-tag span.dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: var(--accent);
-        box-shadow: 0 0 10px var(--accent);
-    }
-
-    .hero-actions {
-        display: flex;
-        gap: 10px;
-        margin-top: 4px;
-    }
-
-    .btn-primary, .btn-ghost {
-        font-size: 13px;
-        padding: 8px 14px;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        cursor: pointer;
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-    }
-
-    .btn-primary {
-        background: linear-gradient(135deg, var(--accent-soft), var(--accent));
-        color: #021018;
-        font-weight: 600;
-        box-shadow: 0 0 18px #00f5ff55;
-    }
-
-    .btn-ghost {
-        background: transparent;
-        border-color: #283749;
-        color: var(--text-main);
-    }
-
-    .btn-ghost:hover {
-        border-color: var(--accent);
-    }
-
-    .hero-meta {
-        margin-top: 16px;
-        font-size: 12px;
-        color: var(--text-muted);
-    }
-
-    .hero-product {
-        position: relative;
-        display: flex;
-        justify-content: center;
-    }
-
-    .hero-card {
-        background: radial-gradient(circle at top, #1a2636, #05070b);
-        border-radius: 20px;
-        padding: 22px 22px 16px;
-        border: 1px solid #263548;
-        box-shadow: 0 18px 40px rgba(0,0,0,0.75);
-        width: 100%;
-        max-width: 360px;
-    }
-
-    .hero-product img {
-        width: 100%;
-        border-radius: 20px;
-        display: block;
-        background: #050505;
-    }
-
-    .hero-pill {
-        margin-top: 10px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 11px;
-        color: var(--text-muted);
-    }
-
-    .hero-pill span.pulse {
-        color: var(--accent);
-    }
-
-    /* Sections */
-    section {
-        background: var(--bg-card);
-        border-radius: 18px;
-        border: 1px solid var(--border-soft);
-        padding: 22px 20px 18px;
-        margin-bottom: 22px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.55);
-    }
-
-    section h2 {
-        font-size: 18px;
-        margin-bottom: 10px;
-        color: #e5ecff;
-    }
-
-    section p {
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-bottom: 10px;
-    }
-
-    .highlight {
-        background: #071521;
-        border-left: 3px solid var(--accent);
-        padding: 10px 12px;
-        margin: 16px 0;
-        font-size: 14px;
-        color: var(--text-main);
-    }
-
-    ol, ul {
-        margin-left: 18px;
-        margin-bottom: 10px;
-    }
-
-    li {
-        font-size: 14px;
-        color: var(--text-muted);
-        margin-bottom: 4px;
-    }
-
-    /* Chart wrapper from previous code */
-    .chart-wrapper {
-        margin: 18px 0 4px;
-        background: #04101b;
-        border-radius: 14px;
-        padding: 12px 16px 16px;
-        border: 1px solid #1c3245;
-    }
-
-    .chart-wrapper h3 {
-        font-size: 14px;
-        margin-bottom: 4px;
-        color: #dfe9ff;
-    }
-
-    .chart-wrapper p {
-        font-size: 12px;
-        margin-bottom: 10px;
-    }
-
-    footer {
-        text-align: center;
-        font-size: 11px;
-        color: #6b7a8e;
-        padding: 20px 0 8px;
-    }
-
-    @media (max-width: 768px) {
-        .hero {
-            grid-template-columns: 1fr;
-        }
-        .nav-links {
-            display: none;
-        }
-        main {
-            padding: 18px 14px 28px;
-        }
-    }
+footer{
+    text-align:center;font-size:11px;
+    color:#6b7a8e;padding:18px 0;
+}
+@media(max-width:768px){
+    .hero{grid-template-columns:1fr}
+    .nav-links{display:none}
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="nav">
-        <div class="nav-left">
-            <img src="LOGO.png" alt="Sparkle Corporations Logo">
-            <div>
-                <div class="brand-name">SPARKLE CORPORATIONS</div>
-                <div style="font-size:11px; color:#9fb1c7;">Calm-Tech Research Division</div>
-            </div>
-        </div>
-        <nav class="nav-links">
-            <a href="#product">Product</a>
-            <a href="#study">Study</a>
-            <a href="#science">Science</a>
-        </nav>
-    </div>
+<div class="nav">
+<div class="nav-left">
+<img src="LOGO.png">
+<div>
+<div class="brand-name">SPARKLE CORPORATIONS</div>
+<div style="font-size:11px;color:#9fb1c7">Calm-Tech Research Division</div>
+</div>
+</div>
+<nav class="nav-links">
+<a href="#product">Product</a>
+<a href="#study">Study</a>
+<a href="#science">Science</a>
+</nav>
+</div>
 </header>
 
 <main>
 
-    <!-- HERO -->
-    <section class="hero" id="product">
-        <div>
-            <div class="hero-tag">
-                <span class="dot"></span>
-                <span>BIOWAVE™ NEUROHAPTIC SYSTEM</span>
-            </div>
-            <h1 class="hero-heading">Wearable stress regulation in under three minutes.</h1>
-            <p class="hero-subtitle">
-                Sparkle Corporations develops calm-tech wearables that actively intervene in the body’s stress
-                response instead of just tracking it. BioWave™ combines HRV-based prediction with targeted
-                NeuroHaptic™ feedback to accelerate recovery from acute stress.
-            </p>
-            <div class="hero-actions">
-                <button class="btn-primary" onclick="document.getElementById('study').scrollIntoView({behavior:'smooth'})">
-                    View Study Results
-                </button>
-                <button class="btn-ghost" onclick="document.getElementById('science').scrollIntoView({behavior:'smooth'})">
-                    How It Works
-                </button>
-            </div>
-            <div class="hero-meta">
-                Internal R&amp;D evaluation • Student participant cohort • HRV as primary biomarker
-            </div>
-        </div>
+<section class="hero" id="product">
+<div>
+<div class="hero-tag"><span class="dot"></span> BIOWAVE™ NEUROHAPTIC SYSTEM</div>
+<h1 class="hero-heading">Wearable stress regulation in under three minutes.</h1>
+<p class="hero-subtitle">
+HRV-driven neurohaptic intervention designed to accelerate autonomic recovery during acute stress.
+</p>
+<div class="hero-actions">
+<button class="btn-primary" onclick="study.scrollIntoView({behavior:'smooth'})">View Study</button>
+<button class="btn-ghost" onclick="science.scrollIntoView({behavior:'smooth'})">How It Works</button>
+</div>
+<div class="hero-meta">Internal R&D • Student cohort • HRV biomarker</div>
+</div>
 
-        <div class="hero-product">
-            <div class="hero-card">
-                <img src="Gemini_Generated_Image_l7168nl7168nl716.png"
-                     alt="BioWave Stress Regulation Bracelet">
-                <div class="hero-pill">
-                    <span>Prototype: BioWave™ Band</span>
-                    <span class="pulse">Calm pulse active ●</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="hero-card">
+<img src="Gemini_Generated_Image_l7168nl7168nl716.png">
+</div>
+</section>
 
-    <!-- STUDY SECTION -->
-    <section id="study">
-        <h2>BioWave™ Stress Regulation Study</h2>
+<section id="study">
+<h2>BioWave™ Stress Regulation Study</h2>
 
-        <h3 style="font-size:15px;margin-top:6px;">Study Objective</h3>
-        <p>
-            The primary objective was to assess the efficacy of the BioWave™ NeuroHaptic™ system in modulating
-            acute stress by accelerating autonomic nervous system recovery. Evaluation focused on changes in
-            Heart Rate Variability (HRV), a validated biomarker for physiological stress regulation.
-        </p>
+<div class="metric-grid">
+<div class="metric-card"><span>Participants</span><strong>45</strong></div>
+<div class="metric-card"><span>Age Range</span><strong>18–24</strong></div>
+<div class="metric-card"><span>Response Rate</span><strong>87%</strong></div>
+<div class="metric-card"><span>Primary Metric</span><strong>HRV</strong></div>
+</div>
 
-        <h3 style="font-size:15px;margin-top:10px;">Methodology</h3>
-        <p>
-            A sample of <strong>45 undergraduate students (18–24 years)</strong> completed a controlled stress-test protocol
-            consisting of timed cognitive load tasks resembling exam conditions. Each participant completed:
-        </p>
+<div class="highlight">
+<strong>22% HRV improvement</strong> within the first three minutes of NeuroHaptic™ activation.
+</div>
 
-        <ol style="line-height:1.6;">
-            <li><strong>Baseline condition</strong> without any wearable intervention.</li>
-            <li><strong>BioWave™ condition</strong> with NeuroHaptic™ pulse activation triggered by HRV-based stress markers.</li>
-        </ol>
+<div class="toggle-group">
+<button class="toggle-btn active" onclick="setMode('biowave')">BioWave™ Active</button>
+<button class="toggle-btn" onclick="setMode('baseline')">No Intervention</button>
+</div>
+<p id="mode-description" style="font-size:13px;color:#9fb1c7">
+NeuroHaptic™ stimulation enabled with adaptive intensity.
+</p>
 
-        <p>
-            Continuous HRV measurements were captured via wrist-based PPG sensors. Time to recovery
-            (return toward parasympathetic dominance) and relative HRV improvement were calculated
-            for both conditions.
-        </p>
+<div class="chart-wrapper">
+<svg width="100%" height="220" viewBox="0 0 500 220">
+<rect width="500" height="220" rx="10" fill="#03101d"/>
+<line x1="60" y1="180" x2="460" y2="180" stroke="#1f364b" stroke-width="2"/>
+<line x1="60" y1="40" x2="60" y2="180" stroke="#1f364b" stroke-width="2"/>
 
-        <h3 style="font-size:15px;margin-top:12px;">Key Results</h3>
+<polyline id="biowave-line"
+points="80,155 160,140 240,120 320,105 400,92"
+fill="none" stroke="#00f5ff" stroke-width="3"/>
 
-        <div class="highlight">
-            <p style="margin:0;">
-                <strong>HRV improved by 22% within the first 3 minutes</strong> of BioWave™ activation compared with
-                baseline, indicating significantly faster autonomic stabilization following acute stress.
-            </p>
-        </div>
+<polyline id="baseline-line"
+points="80,155 160,150 240,148 320,146 400,145"
+fill="none" stroke="#ff6b6b" stroke-width="2"
+stroke-dasharray="6" style="display:none"/>
+</svg>
+</div>
 
-        <ul style="font-size:14px; line-height:1.7;">
-            <li><strong>Recovery time reduction:</strong> participants returned toward calm state <strong>38% faster</strong> on average.</li>
-            <li><strong>Perceived stress:</strong> <strong>62%</strong> reported feeling noticeably calmer within two minutes of activation.</li>
-            <li><strong>Consistency of effect:</strong> positive physiological improvement observed in <strong>87%</strong> of the sample.</li>
-        </ul>
+<div class="accordion">
+<button>Study Limitations & Ethics ▾</button>
+<div class="accordion-content">
+This internal evaluation used a non-clinical student cohort and short-term exposure.
+BioWave™ is not a medical device and does not diagnose or treat disease.
+</div>
+</div>
+</section>
 
-        <!-- CHART -->
-        <div class="chart-wrapper">
-            <h3>HRV Improvement Over Time</h3>
-            <p>
-                HRV (normalized units) measured at one-minute intervals during the BioWave™ condition.
-                Higher HRV reflects better autonomic balance and lower physiological stress.
-            </p>
-
-            <svg width="100%" height="220px" viewBox="0 0 500 220">
-                <rect width="500" height="220" fill="#03101d" rx="10"></rect>
-
-                <!-- Axes -->
-                <line x1="60" y1="180" x2="460" y2="180" stroke="#1f364b" stroke-width="2"></line>
-                <line x1="60" y1="40" x2="60" y2="180" stroke="#1f364b" stroke-width="2"></line>
-
-                <!-- Grid lines -->
-                <g stroke="#122234" stroke-width="1">
-                    <line x1="60" y1="150" x2="460" y2="150"></line>
-                    <line x1="60" y1="120" x2="460" y2="120"></line>
-                    <line x1="60" y1="90"  x2="460" y2="90"></line>
-                    <line x1="60" y1="60"  x2="460" y2="60"></line>
-                </g>
-
-                <!-- Axis labels -->
-                <text x="240" y="205" fill="#c7d5eb" font-size="12">Time after activation (minutes)</text>
-                <text x="10" y="30" fill="#c7d5eb" font-size="12">Relative HRV</text>
-
-                <!-- X labels -->
-                <text x="80"  y="195" fill="#9fb1c7" font-size="11">0</text>
-                <text x="160" y="195" fill="#9fb1c7" font-size="11">1</text>
-                <text x="240" y="195" fill="#9fb1c7" font-size="11">2</text>
-                <text x="320" y="195" fill="#9fb1c7" font-size="11">3</text>
-                <text x="400" y="195" fill="#9fb1c7" font-size="11">4</text>
-
-                <!-- HRV line -->
-                <polyline
-                    points="80,155 160,140 240,120 320,105 400,92"
-                    fill="none"
-                    stroke="#00f5ff"
-                    stroke-width="3"
-                    stroke-linecap="round"
-                    stroke-linejoin="round">
-                </polyline>
-
-                <!-- Points -->
-                <g fill="#00f5ff">
-                    <circle cx="80" cy="155" r="4"></circle>
-                    <circle cx="160" cy="140" r="4"></circle>
-                    <circle cx="240" cy="120" r="4"></circle>
-                    <circle cx="320" cy="105" r="4"></circle>
-                    <circle cx="400" cy="92"  r="4"></circle>
-                </g>
-
-                <!-- Annotation -->
-                <text x="260" y="75" fill="#e5fcff" font-size="12" font-weight="bold">
-                    +22% HRV at minute 3
-                </text>
-            </svg>
-
-            <p style="font-size:12px; margin-top:8px;">
-                The most rapid HRV gain occurs in the first three minutes of NeuroHaptic™ stimulation,
-                corresponding to the period in which participants subjectively reported the largest drop
-                in perceived stress.
-            </p>
-        </div>
-
-        <h3 style="font-size:15px;margin-top:10px;">Scientific Interpretation</h3>
-        <p>
-            Increased HRV signifies stronger parasympathetic nervous system engagement and reduced
-            sympathetic dominance. The observed improvement indicates that BioWave™ does more than
-            passively monitor stress; it actively supports the body’s intrinsic ability to return to
-            a regulated, calm state.
-        </p>
-
-        <p style="font-size: 12px; color: #7f8ea2; margin-top:8px;">
-            *Internal R&amp;D evaluation conducted by Sparkle Corporations. Data reflects preliminary
-            observations and is intended for concept validation rather than clinical diagnosis.*
-        </p>
-    </section>
-
-    <!-- SCIENCE / TECHNOLOGY SECTION -->
-    <section id="science">
-        <h2>How BioWave™ Works</h2>
-        <p>
-            BioWave™ integrates three core technologies into a compact, wrist-worn form factor designed
-            for everyday use in academic and professional environments.
-        </p>
-
-        <ul style="line-height:1.7;">
-            <li>
-                <strong>Predictive HRV Engine:</strong> Real-time Heart Rate Variability patterns are analysed
-                to anticipate rising stress before it becomes consciously overwhelming.
-            </li>
-            <li>
-                <strong>NeuroHaptic™ Stimulation:</strong> Low-frequency, patterned vibrations are delivered
-                to nerve-dense regions of the wrist to promote parasympathetic activation.
-            </li>
-            <li>
-                <strong>Closed-Loop Regulation:</strong> The system continuously monitors response and adjusts
-                intensity and pattern of haptics to stabilise autonomic balance.
-            </li>
-        </ul>
-
-        <p>
-            Unlike conventional wearables that simply notify users that they are stressed, BioWave™ is built
-            to intervene directly at the physiological level, helping users recover composure quickly without
-            requiring screens, apps or conscious technique.
-        </p>
-    </section>
+<section id="science">
+<h2>How BioWave™ Works</h2>
+<ul>
+<li><strong>Predictive HRV Engine:</strong> Detects rising stress patterns.</li>
+<li><strong>NeuroHaptic™ Feedback:</strong> Parasympathetic stimulation via wrist nerves.</li>
+<li><strong>Closed-loop Regulation:</strong> Adaptive response modulation.</li>
+</ul>
+</section>
 
 </main>
 
 <footer>
-    &copy; <span id="year"></span> Sparkle Corporations. Internal concept research page for demonstration and pitching purposes.
+© <span id="year"></span> Sparkle Corporations — Internal concept research
 </footer>
 
 <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById("year").textContent=new Date().getFullYear();
+
+function setMode(mode){
+document.getElementById("biowave-line").style.display=mode==="biowave"?"block":"none";
+document.getElementById("baseline-line").style.display=mode==="baseline"?"block":"none";
+document.getElementById("mode-description").textContent=
+mode==="biowave"
+?"NeuroHaptic™ stimulation enabled with adaptive intensity."
+:"No wearable intervention. Natural recovery only.";
+document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.remove("active"));
+document.querySelector(`.toggle-btn[onclick*='${mode}']`).classList.add("active");
+}
+
+document.querySelector(".accordion button").onclick=()=>{
+const c=document.querySelector(".accordion-content");
+c.style.display=c.style.display==="block"?"none":"block";
+};
 </script>
 
 </body>
