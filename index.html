@@ -1,149 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sparkle Corporations — BioWave™ Study</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sparkle Corporations | BioWave™ Study</title>
 
 <style>
 :root{
   --accent:#00f5ff;
-  --accent-soft:#00cfe6;
-  --bg:#05070b;
-  --card:#0b111a;
+  --danger:#ff4d4d;
+  --bg:#02050a;
+  --panel:#061420;
   --text:#eaf6ff;
   --muted:#9fb1c7;
 }
 
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:system-ui,-apple-system,Segoe UI,sans-serif;
-  background:radial-gradient(circle at top,#0c1624 0,#020308 45%,#000 100%);
+  background:
+    radial-gradient(circle at 20% 10%, rgba(0,245,255,.08), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(0,245,255,.06), transparent 45%),
+    #02050a;
   color:var(--text);
 }
 
 /* LAYOUT */
 main{
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
-  padding:60px 20px;
+  padding:100px 24px;
 }
 
-/* STUDY GLASS */
-.study-shell{
-  position:relative;
-  padding:60px 0;
-}
-.study-shell::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(
-    400px at var(--glow-x,50%) var(--glow-y,50%),
-    rgba(0,245,255,.08),
-    transparent 60%
-  );
-  pointer-events:none;
-}
-.study-glass{
-  background:
-    radial-gradient(circle at top,#142030,#06090f 70%);
-  border-radius:30px;
-  padding:50px 40px;
-  border:1px solid rgba(255,255,255,.12);
-  backdrop-filter:blur(22px);
-  box-shadow:0 40px 100px rgba(0,0,0,.85);
+/* STUDY PANEL */
+.study{
+  background:linear-gradient(180deg,#050b14,#02050a);
+  border-radius:36px;
+  padding:70px 50px;
+  box-shadow:0 50px 140px rgba(0,0,0,.95);
+  border:1px solid rgba(255,255,255,.08);
 }
 
-/* TYPOGRAPHY */
-h2{
-  font-size:28px;
-  margin-bottom:20px;
-  background:linear-gradient(90deg,#e9faff,#7deeff);
+/* HEADER */
+.study-header h1{
+  font-size:42px;
+  background:linear-gradient(90deg,#eaffff,#7deeff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-p{
-  font-size:15px;
-  line-height:1.9;
-  color:#b9c9dd;
-  margin-bottom:14px;
-}
-h3{
-  margin-top:30px;
-  font-size:17px;
-  color:#e7f2ff;
+
+.study-header p{
+  color:var(--muted);
+  margin-top:12px;
+  font-size:16px;
 }
 
 /* METRICS */
-.metric-grid{
+.metrics{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:14px;
-  margin:24px 0;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:24px;
+  margin:50px 0;
 }
-.metric-card{
-  background:#061420;
-  border-radius:16px;
-  padding:16px;
-  border:1px solid #1e3246;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+
+.metric{
+  background:var(--panel);
+  border-radius:24px;
+  padding:28px;
+  text-align:center;
+  border:1px solid #12304a;
+  position:relative;
+  overflow:hidden;
 }
-.metric-card span{
-  font-size:11px;
+
+.metric::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,transparent,rgba(0,245,255,.25),transparent);
+  opacity:0;
+  transition:.4s;
+}
+
+.metric:hover::after{opacity:1}
+
+.metric span{
+  font-size:13px;
   color:var(--muted);
 }
-.metric-card strong{
+
+.metric strong{
   display:block;
-  font-size:22px;
+  font-size:36px;
   color:var(--accent);
-  margin-top:4px;
+  margin-top:8px;
+}
+
+/* DESCRIPTION */
+.section{
+  max-width:850px;
+  font-size:16px;
+  line-height:1.9;
+  color:#c7d6ea;
+}
+
+/* TIMELINE */
+.timeline{
+  margin:60px 0 20px;
+}
+
+.timeline input{
+  width:100%;
+}
+
+.timeline-labels{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--muted);
+  margin-top:6px;
 }
 
 /* GRAPH */
-.cool-graph{
-  margin-top:40px;
-  padding:26px;
-  border-radius:26px;
-  background:radial-gradient(circle at top,#0c1f33,#05070b 70%);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.06),
-    0 30px 80px rgba(0,0,0,.8);
-}
-.graph-header h3{
-  font-size:18px;
-  margin-bottom:4px;
-}
-.graph-header p{
-  font-size:13px;
-  color:var(--muted);
-  margin-bottom:16px;
+.graph-box{
+  margin-top:50px;
+  padding:30px;
+  border-radius:30px;
+  background:radial-gradient(circle at top,#0c1f33,#02050a 70%);
+  border:1px solid rgba(255,255,255,.08);
 }
 
-/* SVG ANIMATION */
+svg{
+  width:100%;
+  height:380px;
+}
+
 svg polyline{
   stroke-dasharray:1200;
   stroke-dashoffset:1200;
-  animation:drawLine 2.2s ease forwards;
+  animation:draw 2.2s ease forwards;
 }
-@keyframes drawLine{to{stroke-dashoffset:0}}
 
-.graph-note{
-  margin-top:14px;
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.live-text{
+  margin-top:20px;
+  font-size:17px;
+  color:#eaffff;
+}
+
+/* FOOTNOTE */
+.note{
+  margin-top:40px;
   font-size:13px;
-  color:#a8bdd6;
-}
-
-/* SCROLL REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(30px) scale(.98);
-  transition:all .9s cubic-bezier(.2,.8,.2,1);
-}
-.reveal.active{
-  opacity:1;
-  transform:none;
+  color:#8ea2bd;
 }
 </style>
 </head>
@@ -151,133 +162,97 @@ svg polyline{
 <body>
 
 <main>
-<section class="study-shell">
-<div class="study-glass reveal">
+<section class="study">
 
-<h2>BioWave™ Stress Regulation Study</h2>
-
-<p>
-This internal exploratory study evaluated the effectiveness of the BioWave™
-NeuroHaptic™ system in accelerating physiological recovery from acute academic
-stress using Heart Rate Variability (HRV) as the primary biomarker.
-</p>
-
-<div class="metric-grid">
-  <div class="metric-card"><span>Participants</span><strong>45</strong></div>
-  <div class="metric-card"><span>Age Range</span><strong>18–24</strong></div>
-  <div class="metric-card"><span>Design</span><strong>Within-Subject</strong></div>
-  <div class="metric-card"><span>HRV Gain</span><strong>22%</strong></div>
+<div class="study-header">
+  <h1>BioWave™ Stress Regulation Study</h1>
+  <p>Live autonomic recovery under acute academic stress</p>
 </div>
 
-<h3>Results Overview</h3>
-<p>
-BioWave™ activation produced faster parasympathetic re-engagement compared to
-natural recovery, with the largest divergence occurring within the first three
-minutes post-stress.
-</p>
+<div class="metrics">
+  <div class="metric"><span>Participants</span><strong>45</strong></div>
+  <div class="metric"><span>Design</span><strong>Within-Subject</strong></div>
+  <div class="metric"><span>HRV Improvement</span><strong>+22%</strong></div>
+  <div class="metric"><span>Recovery Speed</span><strong>+38%</strong></div>
+</div>
+
+<div class="section">
+  This exploratory human-factors study evaluated the BioWave™ NeuroHaptic™
+  system’s ability to accelerate recovery from acute academic stress.
+  Heart Rate Variability (HRV) was used as the primary biomarker of autonomic
+  nervous system regulation. Each participant served as their own control
+  under baseline and BioWave™-active conditions.
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline">
+  <input type="range" min="0" max="5" value="0" id="time">
+  <div class="timeline-labels">
+    <span>0m</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+  </div>
+</div>
 
 <!-- GRAPH -->
-<div class="cool-graph reveal">
-<div class="graph-header">
-  <h3>Autonomic Recovery Trajectory</h3>
-  <p>HRV response following acute cognitive stress</p>
-</div>
+<div class="graph-box">
+<svg viewBox="0 0 900 360">
 
-<svg viewBox="0 0 800 420" width="100%" height="420">
-
-<defs>
-  <linearGradient id="bioFill" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#00f5ff" stop-opacity=".35"/>
-    <stop offset="100%" stop-color="#00f5ff" stop-opacity="0"/>
-  </linearGradient>
-  <linearGradient id="baseFill" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#ff6b6b" stop-opacity=".25"/>
-    <stop offset="100%" stop-color="#ff6b6b" stop-opacity="0"/>
-  </linearGradient>
-</defs>
-
-<!-- GRID -->
-<g stroke="#14263a">
-  <line x1="80" y1="340" x2="760" y2="340"/>
-  <line x1="80" y1="260" x2="760" y2="260"/>
-  <line x1="80" y1="180" x2="760" y2="180"/>
-  <line x1="80" y1="100" x2="760" y2="100"/>
-</g>
-
-<!-- AXES -->
-<line x1="80" y1="60" x2="80" y2="340" stroke="#35506b" stroke-width="2"/>
-<line x1="80" y1="340" x2="760" y2="340" stroke="#35506b" stroke-width="2"/>
-
-<!-- BASELINE AREA -->
-<path d="
-M80 300
-L200 295
-L320 292
-L440 290
-L560 288
-L680 286
-L760 285
-L760 340 L80 340 Z"
-fill="url(#baseFill)"/>
-
-<!-- BIOWAVE AREA -->
-<path d="
-M80 300
-L200 260
-L320 220
-L440 190
-L560 160
-L680 140
-L760 130
-L760 340 L80 340 Z"
-fill="url(#bioFill)"/>
-
-<!-- LINES -->
+<!-- BASELINE -->
 <polyline
-points="80,300 200,295 320,292 440,290 560,288 680,286 760,285"
-fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="6"/>
+points="60,270 220,265 380,262 540,260 700,258 840,256"
+fill="none" stroke="#ff4d4d" stroke-width="3" stroke-dasharray="6"/>
 
+<!-- BIOWAVE -->
+<polyline id="bioLine"
+points="60,270 220,225 380,195 540,165 700,145 840,130"
+fill="none" stroke="#00f5ff" stroke-width="6"/>
+
+<!-- GLOW -->
 <polyline
-points="80,300 200,260 320,220 440,190 560,160 680,140 760,130"
-fill="none" stroke="#00f5ff" stroke-width="4"/>
+points="60,270 220,225 380,195 540,165 700,145 840,130"
+fill="none" stroke="#00f5ff" stroke-width="18" opacity=".15"/>
 
-<!-- LEGEND -->
-<g font-size="12" fill="#cfefff">
-  <rect x="520" y="70" width="10" height="10" fill="#00f5ff"/>
-  <text x="536" y="79">BioWave™ Active</text>
-  <rect x="520" y="90" width="10" height="10" fill="#ff6b6b"/>
-  <text x="536" y="99">Baseline Recovery</text>
-</g>
-
-<text x="420" y="140" fill="#eaffff" font-size="14" font-weight="600">
-+22% HRV improvement at 3 minutes
-</text>
+<!-- MARKER -->
+<circle id="dot" cx="60" cy="270" r="8" fill="#00f5ff"/>
 
 </svg>
 
-<p class="graph-note">
-BioWave™ shows accelerated autonomic recovery compared to natural baseline.
+<p id="live" class="live-text">
+Minute 0: Peak stress detected. HRV at lowest point.
 </p>
 </div>
 
-</div>
+<p class="note">
+Internal exploratory evaluation. Non-clinical, student cohort only.
+BioWave™ is not a medical device.
+</p>
+
 </section>
 </main>
 
 <script>
-/* GLOW FOLLOW */
-document.addEventListener('mousemove',e=>{
-  document.documentElement.style.setProperty('--glow-x',e.clientX+'px');
-  document.documentElement.style.setProperty('--glow-y',e.clientY+'px');
-});
+const texts=[
+"Minute 0: Peak stress detected. HRV at lowest point.",
+"Minute 1: Initial parasympathetic response begins.",
+"Minute 2: HRV recovering faster with BioWave™.",
+"Minute 3: +22% HRV improvement observed.",
+"Minute 4: Autonomic balance stabilising.",
+"Minute 5: Calm state nearly restored."
+];
 
-/* SCROLL REVEAL */
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting)e.target.classList.add('active');
-  });
-},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const points=[
+[60,270],[220,225],[380,195],[540,165],[700,145],[840,130]
+];
+
+const slider=document.getElementById("time");
+const dot=document.getElementById("dot");
+const live=document.getElementById("live");
+
+slider.oninput=()=>{
+  const i=slider.value;
+  dot.setAttribute("cx",points[i][0]);
+  dot.setAttribute("cy",points[i][1]);
+  live.textContent=texts[i];
+};
 </script>
 
 </body>
