@@ -152,3 +152,110 @@
     color: #a8bdd6;
     margin-top: 12px;
 }
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+    transition: all 0.9s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+        }
+    });
+}, { threshold: 0.15 });
+
+reveals.forEach(r => observer.observe(r));
+</script>
+
+<div class="reveal">
+    <!-- graph / metrics / paragraphs -->
+</div>
+
+<strong data-count="22">0</strong>% HRV Gain
+<script>
+document.querySelectorAll('[data-count]').forEach(el => {
+    const target = +el.dataset.count;
+    let count = 0;
+    const step = target / 40;
+
+    const interval = setInterval(() => {
+        count += step;
+        if (count >= target) {
+            el.textContent = target;
+            clearInterval(interval);
+        } else {
+            el.textContent = Math.round(count);
+        }
+    }, 25);
+});
+</script>
+.tooltip {
+    position: relative;
+    cursor: help;
+    border-bottom: 1px dotted #6bdcff;
+}
+
+.tooltip::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0b1825;
+    color: #cfefff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    width: 240px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+    box-shadow: 0 12px 40px rgba(0,0,0,.7);
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}
+
+svg polyline {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 2s ease forwards;
+}
+
+@keyframes drawLine {
+    to { stroke-dashoffset: 0; }
+}
+<script>
+document.addEventListener('mousemove', e => {
+    document.documentElement.style.setProperty(
+        '--glow-x', `${e.clientX}px`
+    );
+    document.documentElement.style.setProperty(
+        '--glow-y', `${e.clientY}px`
+    );
+});
+</script>
+.study-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        400px at var(--glow-x) var(--glow-y),
+        rgba(0,245,255,0.08),
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
