@@ -157,9 +157,91 @@ svg polyline{
   color:#8ea2bd;
 }
 </style>
+  /* ===== GLOBAL HEADER / NAV ===== */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(16px);
+  background:rgba(2,5,10,0.75);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,0.25);
+}
+
+.brand span{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.14em;
+  color:#eaf6ff;
+}
+
+.nav-links a{
+  margin-left:26px;
+  font-size:13px;
+  letter-spacing:0.08em;
+  text-decoration:none;
+  color:#9fb1c7;
+  position:relative;
+}
+
+.nav-links a:hover{
+  color:#00f5ff;
+}
+
+.nav-links a.active{
+  color:#00f5ff;
+}
+
+.nav-links a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:100%;
+  height:2px;
+  background:#00f5ff;
+  border-radius:2px;
+}
+
 </head>
 
 <body>
+<header class="site-header">
+  <div class="nav-container">
+    <div class="brand">
+      <img src="LOGO.png" alt="Sparkle Corporations Logo">
+      <span>SPARKLE CORPORATIONS</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="study.html" class="active">Study</a>
+      <a href="study-details.html">Study Details</a>
+    </nav>
+  </div>
+</header>
 
 <main>
 <section class="study">
