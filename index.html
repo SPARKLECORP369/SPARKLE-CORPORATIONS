@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sparkle Corporations | BioWave™ Study</title>
+<title>Sparkle Corporations</title>
 
 <style>
 :root{
   --accent:#00f5ff;
-  --danger:#ff4d4d;
   --bg:#02050a;
   --panel:#061420;
   --text:#eaf6ff;
@@ -20,240 +19,252 @@
 body{
   font-family:system-ui,-apple-system,Segoe UI,sans-serif;
   background:
-    radial-gradient(circle at 20% 10%, rgba(0,245,255,.08), transparent 40%),
-    radial-gradient(circle at 80% 90%, rgba(0,245,255,.06), transparent 45%),
+    radial-gradient(circle at 20% 15%, rgba(0,245,255,.08), transparent 40%),
+    radial-gradient(circle at 80% 85%, rgba(0,245,255,.06), transparent 45%),
     #02050a;
   color:var(--text);
 }
 
-/* LAYOUT */
+/* NAV */
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter:blur(14px);
+  background:rgba(2,5,10,.7);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.2);
+}
+
+.brand span{
+  font-weight:700;
+  letter-spacing:.14em;
+  font-size:13px;
+}
+
+.nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+  margin-left:24px;
+}
+
+.nav a:hover{color:var(--accent)}
+
+/* HERO */
 main{
   max-width:1200px;
   margin:auto;
   padding:100px 24px;
 }
 
-/* STUDY PANEL */
-.study{
-  background:linear-gradient(180deg,#050b14,#02050a);
-  border-radius:36px;
-  padding:70px 50px;
-  box-shadow:0 50px 140px rgba(0,0,0,.95);
-  border:1px solid rgba(255,255,255,.08);
+.hero{
+  max-width:780px;
 }
 
-/* HEADER */
-.study-header h1{
-  font-size:42px;
+.hero h1{
+  font-size:46px;
+  line-height:1.1;
   background:linear-gradient(90deg,#eaffff,#7deeff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.study-header p{
-  color:var(--muted);
-  margin-top:12px;
-  font-size:16px;
+.hero p{
+  font-size:18px;
+  line-height:1.8;
+  color:#c7d6ea;
+  margin-top:20px;
 }
 
-/* METRICS */
-.metrics{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:24px;
-  margin:50px 0;
+.hero-actions{
+  display:flex;
+  gap:16px;
+  margin-top:40px;
 }
 
-.metric{
-  background:var(--panel);
-  border-radius:24px;
-  padding:28px;
-  text-align:center;
-  border:1px solid #12304a;
-  position:relative;
-  overflow:hidden;
+.btn-primary,
+.btn-secondary{
+  padding:14px 22px;
+  border-radius:999px;
+  font-size:14px;
+  letter-spacing:.08em;
+  text-decoration:none;
 }
 
-.metric::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(0,245,255,.25),transparent);
-  opacity:0;
-  transition:.4s;
+.btn-primary{
+  background:linear-gradient(135deg,var(--accent),#7deeff);
+  color:#021018;
+  font-weight:600;
+  box-shadow:0 0 30px rgba(0,245,255,.4);
 }
 
-.metric:hover::after{opacity:1}
-
-.metric span{
-  font-size:13px;
-  color:var(--muted);
+.btn-secondary{
+  border:1px solid rgba(255,255,255,.2);
+  color:var(--text);
 }
 
-.metric strong{
-  display:block;
-  font-size:36px;
-  color:var(--accent);
-  margin-top:8px;
-}
-
-/* DESCRIPTION */
+/* SECTIONS */
 .section{
-  max-width:850px;
+  margin-top:120px;
+  max-width:900px;
+}
+
+.section h2{
+  font-size:28px;
+  margin-bottom:16px;
+}
+
+.section p{
   font-size:16px;
   line-height:1.9;
   color:#c7d6ea;
 }
 
-/* TIMELINE */
-.timeline{
-  margin:60px 0 20px;
-}
-
-.timeline input{
-  width:100%;
-}
-
-.timeline-labels{
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
-  color:var(--muted);
-  margin-top:6px;
-}
-
-/* GRAPH */
-.graph-box{
-  margin-top:50px;
-  padding:30px;
-  border-radius:30px;
-  background:radial-gradient(circle at top,#0c1f33,#02050a 70%);
-  border:1px solid rgba(255,255,255,.08);
-}
-
-svg{
-  width:100%;
-  height:380px;
-}
-
-svg polyline{
-  stroke-dasharray:1200;
-  stroke-dashoffset:1200;
-  animation:draw 2.2s ease forwards;
-}
-
-@keyframes draw{to{stroke-dashoffset:0}}
-
-.live-text{
-  margin-top:20px;
-  font-size:17px;
-  color:#eaffff;
-}
-
-/* FOOTNOTE */
-.note{
+/* FEATURE GRID */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
   margin-top:40px;
-  font-size:13px;
+}
+
+.feature{
+  background:var(--panel);
+  border-radius:24px;
+  padding:28px;
+  border:1px solid #12304a;
+}
+
+.feature h3{
+  font-size:18px;
+  color:#e7f2ff;
+  margin-bottom:8px;
+}
+
+.feature p{
+  font-size:15px;
+}
+
+/* FOOTER */
+footer{
+  margin-top:140px;
+  padding:40px 24px;
+  border-top:1px solid rgba(255,255,255,.08);
   color:#8ea2bd;
+  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<main>
-<section class="study">
-
-<div class="study-header">
-  <h1>BioWave™ Stress Regulation Study</h1>
-  <p>Live autonomic recovery under acute academic stress</p>
-</div>
-
-<div class="metrics">
-  <div class="metric"><span>Participants</span><strong>45</strong></div>
-  <div class="metric"><span>Design</span><strong>Within-Subject</strong></div>
-  <div class="metric"><span>HRV Improvement</span><strong>+22%</strong></div>
-  <div class="metric"><span>Recovery Speed</span><strong>+38%</strong></div>
-</div>
-
-<div class="section">
-  This exploratory human-factors study evaluated the BioWave™ NeuroHaptic™
-  system’s ability to accelerate recovery from acute academic stress.
-  Heart Rate Variability (HRV) was used as the primary biomarker of autonomic
-  nervous system regulation. Each participant served as their own control
-  under baseline and BioWave™-active conditions.
-</div>
-
-<!-- TIMELINE -->
-<div class="timeline">
-  <input type="range" min="0" max="5" value="0" id="time">
-  <div class="timeline-labels">
-    <span>0m</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <!-- REPLACE LOGO.png with your actual logo -->
+      <img src="LOGO.png" alt="Sparkle Corporations Logo">
+      <span>SPARKLE CORPORATIONS</span>
+    </div>
+    <nav>
+      <a href="study.html">Study</a>
+      <a href="study-details.html">Details</a>
+    </nav>
   </div>
-</div>
+</header>
 
-<!-- GRAPH -->
-<div class="graph-box">
-<svg viewBox="0 0 900 360">
+<main>
 
-<!-- BASELINE -->
-<polyline
-points="60,270 220,265 380,262 540,260 700,258 840,256"
-fill="none" stroke="#ff4d4d" stroke-width="3" stroke-dasharray="6"/>
+<section class="hero">
+  <h1>Calm-tech systems for real-world stress.</h1>
+  <p>
+    Sparkle Corporations is a student-led research initiative exploring
+    wearable neurohaptic systems designed to actively support stress
+    regulation — not just measure it.
+  </p>
 
-<!-- BIOWAVE -->
-<polyline id="bioLine"
-points="60,270 220,225 380,195 540,165 700,145 840,130"
-fill="none" stroke="#00f5ff" stroke-width="6"/>
-
-<!-- GLOW -->
-<polyline
-points="60,270 220,225 380,195 540,165 700,145 840,130"
-fill="none" stroke="#00f5ff" stroke-width="18" opacity=".15"/>
-
-<!-- MARKER -->
-<circle id="dot" cx="60" cy="270" r="8" fill="#00f5ff"/>
-
-</svg>
-
-<p id="live" class="live-text">
-Minute 0: Peak stress detected. HRV at lowest point.
-</p>
-</div>
-
-<p class="note">
-Internal exploratory evaluation. Non-clinical, student cohort only.
-BioWave™ is not a medical device.
-</p>
-
+  <div class="hero-actions">
+    <a href="study.html" class="btn-primary">View Study</a>
+    <a href="study-details.html" class="btn-secondary">Read Evaluation</a>
+  </div>
 </section>
+
+<section class="section">
+  <h2>BioWave™ NeuroHaptic System</h2>
+  <p>
+    BioWave™ is a wrist-worn prototype that uses real-time Heart Rate
+    Variability (HRV) patterns to detect rising stress and deliver
+    subtle neurohaptic feedback aimed at accelerating autonomic recovery.
+  </p>
+
+  <div class="features">
+    <div class="feature">
+      <h3>Active Regulation</h3>
+      <p>
+        Unlike conventional wearables, BioWave™ intervenes during stress
+        rather than passively notifying users after the fact.
+      </p>
+    </div>
+
+    <div class="feature">
+      <h3>Student-Focused Design</h3>
+      <p>
+        Designed around academic stress scenarios such as exams,
+        deadlines, and cognitive overload.
+      </p>
+    </div>
+
+    <div class="feature">
+      <h3>Research-Driven</h3>
+      <p>
+        Evaluated through an internal exploratory study using physiological
+        biomarkers and participant feedback.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Research & Evaluation</h2>
+  <p>
+    The BioWave™ system has been evaluated through a controlled student
+    cohort study examining physiological stress recovery and subjective
+    calming effects.
+  </p>
+
+  <div class="hero-actions">
+    <a href="study.html" class="btn-secondary">Interactive Results</a>
+    <a href="study-details.html" class="btn-secondary">Methodology & Reviews</a>
+  </div>
+</section>
+
 </main>
 
-<script>
-const texts=[
-"Minute 0: Peak stress detected. HRV at lowest point.",
-"Minute 1: Initial parasympathetic response begins.",
-"Minute 2: HRV recovering faster with BioWave™.",
-"Minute 3: +22% HRV improvement observed.",
-"Minute 4: Autonomic balance stabilising.",
-"Minute 5: Calm state nearly restored."
-];
-
-const points=[
-[60,270],[220,225],[380,195],[540,165],[700,145],[840,130]
-];
-
-const slider=document.getElementById("time");
-const dot=document.getElementById("dot");
-const live=document.getElementById("live");
-
-slider.oninput=()=>{
-  const i=slider.value;
-  dot.setAttribute("cx",points[i][0]);
-  dot.setAttribute("cy",points[i][1]);
-  live.textContent=texts[i];
-};
-</script>
+<footer>
+  © 2025 Sparkle Corporations · Internal research & demonstration project
+</footer>
 
 </body>
 </html>
