@@ -25,20 +25,20 @@ body{
   color:var(--text);
 }
 
-/* NAV */
-header{
+/* HEADER */
+.site-header{
   position:sticky;
   top:0;
-  z-index:10;
-  backdrop-filter:blur(14px);
-  background:rgba(2,5,10,.7);
-  border-bottom:1px solid rgba(255,255,255,.06);
+  z-index:100;
+  backdrop-filter:blur(16px);
+  background:rgba(2,5,10,.75);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.nav{
+.nav-container{
   max-width:1200px;
   margin:auto;
-  padding:16px 24px;
+  padding:14px 24px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -51,220 +51,112 @@ header{
 }
 
 .brand img{
-  width:44px;
-  height:44px;
+  width:42px;
+  height:42px;
   border-radius:50%;
-  object-fit:cover;
-  border:1px solid rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.25);
 }
 
 .brand span{
+  font-size:13px;
   font-weight:700;
   letter-spacing:.14em;
-  font-size:13px;
 }
 
-.nav a{
-  color:var(--muted);
+.nav-links a{
+  margin-left:26px;
+  font-size:13px;
   text-decoration:none;
-  font-size:13px;
-  margin-left:24px;
+  color:var(--muted);
 }
 
-.nav a:hover{color:var(--accent)}
+.nav-links a.active,
+.nav-links a:hover{
+  color:var(--accent);
+}
 
-/* HERO */
+/* CONTENT */
 main{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
   padding:100px 24px;
 }
 
 .hero{
-  max-width:780px;
+  max-width:800px;
 }
 
 .hero h1{
-  font-size:46px;
-  line-height:1.1;
+  font-size:44px;
   background:linear-gradient(90deg,#eaffff,#7deeff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .hero p{
+  margin-top:18px;
   font-size:18px;
   line-height:1.8;
   color:#c7d6ea;
-  margin-top:20px;
 }
 
-.hero-actions{
-  display:flex;
-  gap:16px;
+.actions{
   margin-top:40px;
+  display:flex;
+  gap:18px;
 }
 
-.btn-primary,
-.btn-secondary{
+.actions a{
   padding:14px 22px;
   border-radius:999px;
   font-size:14px;
-  letter-spacing:.08em;
   text-decoration:none;
 }
 
-.btn-primary{
+.primary{
   background:linear-gradient(135deg,var(--accent),#7deeff);
   color:#021018;
   font-weight:600;
-  box-shadow:0 0 30px rgba(0,245,255,.4);
 }
 
-.btn-secondary{
+.secondary{
   border:1px solid rgba(255,255,255,.2);
   color:var(--text);
-}
-
-/* SECTIONS */
-.section{
-  margin-top:120px;
-  max-width:900px;
-}
-
-.section h2{
-  font-size:28px;
-  margin-bottom:16px;
-}
-
-.section p{
-  font-size:16px;
-  line-height:1.9;
-  color:#c7d6ea;
-}
-
-/* FEATURE GRID */
-.features{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:24px;
-  margin-top:40px;
-}
-
-.feature{
-  background:var(--panel);
-  border-radius:24px;
-  padding:28px;
-  border:1px solid #12304a;
-}
-
-.feature h3{
-  font-size:18px;
-  color:#e7f2ff;
-  margin-bottom:8px;
-}
-
-.feature p{
-  font-size:15px;
-}
-
-/* FOOTER */
-footer{
-  margin-top:140px;
-  padding:40px 24px;
-  border-top:1px solid rgba(255,255,255,.08);
-  color:#8ea2bd;
-  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="nav">
+<header class="site-header">
+  <div class="nav-container">
     <div class="brand">
-      <!-- REPLACE LOGO.png with your actual logo -->
-      <img src="LOGO.png" alt="Sparkle Corporations Logo">
+      <img src="LOGO.png" alt="Sparkle Logo">
       <span>SPARKLE CORPORATIONS</span>
     </div>
-    <nav>
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
       <a href="study.html">Study</a>
-      <a href="study-details.html">Details</a>
+      <a href="study-details.html">Study Details</a>
     </nav>
   </div>
 </header>
 
 <main>
+  <section class="hero">
+    <h1>Calm-tech systems for real-world academic stress.</h1>
+    <p>
+      Sparkle Corporations is a student-led research initiative exploring wearable
+      neurohaptic systems that aim to actively support stress regulation rather
+      than merely tracking it.
+    </p>
 
-<section class="hero">
-  <h1>Calm-tech systems for real-world stress.</h1>
-  <p>
-    Sparkle Corporations is a student-led research initiative exploring
-    wearable neurohaptic systems designed to actively support stress
-    regulation — not just measure it.
-  </p>
-
-  <div class="hero-actions">
-    <a href="study.html" class="btn-primary">View Study</a>
-    <a href="study-details.html" class="btn-secondary">Read Evaluation</a>
-  </div>
-</section>
-
-<section class="section">
-  <h2>BioWave™ NeuroHaptic System</h2>
-  <p>
-    BioWave™ is a wrist-worn prototype that uses real-time Heart Rate
-    Variability (HRV) patterns to detect rising stress and deliver
-    subtle neurohaptic feedback aimed at accelerating autonomic recovery.
-  </p>
-
-  <div class="features">
-    <div class="feature">
-      <h3>Active Regulation</h3>
-      <p>
-        Unlike conventional wearables, BioWave™ intervenes during stress
-        rather than passively notifying users after the fact.
-      </p>
+    <div class="actions">
+      <a href="study.html" class="primary">View Study</a>
+      <a href="study-details.html" class="secondary">Detailed Evaluation</a>
     </div>
-
-    <div class="feature">
-      <h3>Student-Focused Design</h3>
-      <p>
-        Designed around academic stress scenarios such as exams,
-        deadlines, and cognitive overload.
-      </p>
-    </div>
-
-    <div class="feature">
-      <h3>Research-Driven</h3>
-      <p>
-        Evaluated through an internal exploratory study using physiological
-        biomarkers and participant feedback.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <h2>Research & Evaluation</h2>
-  <p>
-    The BioWave™ system has been evaluated through a controlled student
-    cohort study examining physiological stress recovery and subjective
-    calming effects.
-  </p>
-
-  <div class="hero-actions">
-    <a href="study.html" class="btn-secondary">Interactive Results</a>
-    <a href="study-details.html" class="btn-secondary">Methodology & Reviews</a>
-  </div>
-</section>
-
+  </section>
 </main>
-
-<footer>
-  © 2025 Sparkle Corporations · Internal research & demonstration project
-</footer>
 
 </body>
 </html>
