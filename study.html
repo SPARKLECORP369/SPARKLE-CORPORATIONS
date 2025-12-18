@@ -26,14 +26,63 @@ body{
   color:var(--text);
 }
 
-/* LAYOUT */
+/* ===== HEADER ===== */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  backdrop-filter:blur(16px);
+  background:rgba(2,5,10,.75);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);
+}
+
+.brand span{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:.14em;
+}
+
+.nav-links a{
+  margin-left:26px;
+  font-size:13px;
+  text-decoration:none;
+  color:var(--muted);
+}
+
+.nav-links a.active,
+.nav-links a:hover{
+  color:var(--accent);
+}
+
+/* ===== CONTENT ===== */
 main{
   max-width:1200px;
   margin:auto;
-  padding:100px 24px;
+  padding:80px 24px;
 }
 
-/* STUDY PANEL */
 .study{
   background:linear-gradient(180deg,#050b14,#02050a);
   border-radius:36px;
@@ -42,18 +91,18 @@ main{
   border:1px solid rgba(255,255,255,.08);
 }
 
-/* HEADER */
-.study-header h1{
+.study h1{
   font-size:42px;
   background:linear-gradient(90deg,#eaffff,#7deeff);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.study-header p{
-  color:var(--muted);
-  margin-top:12px;
+.study p{
+  margin-top:16px;
   font-size:16px;
+  line-height:1.9;
+  color:#c7d6ea;
 }
 
 /* METRICS */
@@ -70,20 +119,7 @@ main{
   padding:28px;
   text-align:center;
   border:1px solid #12304a;
-  position:relative;
-  overflow:hidden;
 }
-
-.metric::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(120deg,transparent,rgba(0,245,255,.25),transparent);
-  opacity:0;
-  transition:.4s;
-}
-
-.metric:hover::after{opacity:1}
 
 .metric span{
   font-size:13px;
@@ -92,34 +128,9 @@ main{
 
 .metric strong{
   display:block;
-  font-size:36px;
+  font-size:34px;
   color:var(--accent);
   margin-top:8px;
-}
-
-/* DESCRIPTION */
-.section{
-  max-width:850px;
-  font-size:16px;
-  line-height:1.9;
-  color:#c7d6ea;
-}
-
-/* TIMELINE */
-.timeline{
-  margin:60px 0 20px;
-}
-
-.timeline input{
-  width:100%;
-}
-
-.timeline-labels{
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
-  color:var(--muted);
-  margin-top:6px;
 }
 
 /* GRAPH */
@@ -149,92 +160,17 @@ svg polyline{
   font-size:17px;
   color:#eaffff;
 }
-
-/* FOOTNOTE */
-.note{
-  margin-top:40px;
-  font-size:13px;
-  color:#8ea2bd;
-}
 </style>
-  /* ===== GLOBAL HEADER / NAV ===== */
-.site-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  backdrop-filter:blur(16px);
-  background:rgba(2,5,10,0.75);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
-
-.nav-container{
-  max-width:1200px;
-  margin:auto;
-  padding:14px 24px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brand img{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  object-fit:cover;
-  border:1px solid rgba(255,255,255,0.25);
-}
-
-.brand span{
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:0.14em;
-  color:#eaf6ff;
-}
-
-.nav-links a{
-  margin-left:26px;
-  font-size:13px;
-  letter-spacing:0.08em;
-  text-decoration:none;
-  color:#9fb1c7;
-  position:relative;
-}
-
-.nav-links a:hover{
-  color:#00f5ff;
-}
-
-.nav-links a.active{
-  color:#00f5ff;
-}
-
-.nav-links a.active::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:100%;
-  height:2px;
-  background:#00f5ff;
-  border-radius:2px;
-}
-
 </head>
 
 <body>
+
 <header class="site-header">
   <div class="nav-container">
     <div class="brand">
-      <img src="LOGO.png" alt="Sparkle Corporations Logo">
+      <img src="LOGO.png" alt="Sparkle Logo">
       <span>SPARKLE CORPORATIONS</span>
     </div>
-
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="study.html" class="active">Study</a>
@@ -246,10 +182,14 @@ svg polyline{
 <main>
 <section class="study">
 
-<div class="study-header">
-  <h1>BioWave™ Stress Regulation Study</h1>
-  <p>Live autonomic recovery under acute academic stress</p>
-</div>
+<h1>BioWave™ Stress Regulation Study</h1>
+
+<p>
+This exploratory human-factors study evaluated the BioWave™ NeuroHaptic™
+system’s ability to accelerate recovery from acute academic stress.
+Heart Rate Variability (HRV) was used as the primary biomarker of autonomic
+nervous system regulation.
+</p>
 
 <div class="metrics">
   <div class="metric"><span>Participants</span><strong>45</strong></div>
@@ -258,23 +198,6 @@ svg polyline{
   <div class="metric"><span>Recovery Speed</span><strong>+38%</strong></div>
 </div>
 
-<div class="section">
-  This exploratory human-factors study evaluated the BioWave™ NeuroHaptic™
-  system’s ability to accelerate recovery from acute academic stress.
-  Heart Rate Variability (HRV) was used as the primary biomarker of autonomic
-  nervous system regulation. Each participant served as their own control
-  under baseline and BioWave™-active conditions.
-</div>
-
-<!-- TIMELINE -->
-<div class="timeline">
-  <input type="range" min="0" max="5" value="0" id="time">
-  <div class="timeline-labels">
-    <span>0m</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-  </div>
-</div>
-
-<!-- GRAPH -->
 <div class="graph-box">
 <svg viewBox="0 0 900 360">
 
@@ -284,7 +207,7 @@ points="60,270 220,265 380,262 540,260 700,258 840,256"
 fill="none" stroke="#ff4d4d" stroke-width="3" stroke-dasharray="6"/>
 
 <!-- BIOWAVE -->
-<polyline id="bioLine"
+<polyline
 points="60,270 220,225 380,195 540,165 700,145 840,130"
 fill="none" stroke="#00f5ff" stroke-width="6"/>
 
@@ -293,49 +216,17 @@ fill="none" stroke="#00f5ff" stroke-width="6"/>
 points="60,270 220,225 380,195 540,165 700,145 840,130"
 fill="none" stroke="#00f5ff" stroke-width="18" opacity=".15"/>
 
-<!-- MARKER -->
-<circle id="dot" cx="60" cy="270" r="8" fill="#00f5ff"/>
-
 </svg>
 
-<p id="live" class="live-text">
-Minute 0: Peak stress detected. HRV at lowest point.
+<p class="live-text">
+BioWave™ demonstrates accelerated parasympathetic re-engagement compared to
+natural recovery, with the largest divergence occurring within the first
+three minutes post-stress.
 </p>
 </div>
 
-<p class="note">
-Internal exploratory evaluation. Non-clinical, student cohort only.
-BioWave™ is not a medical device.
-</p>
-
 </section>
 </main>
-
-<script>
-const texts=[
-"Minute 0: Peak stress detected. HRV at lowest point.",
-"Minute 1: Initial parasympathetic response begins.",
-"Minute 2: HRV recovering faster with BioWave™.",
-"Minute 3: +22% HRV improvement observed.",
-"Minute 4: Autonomic balance stabilising.",
-"Minute 5: Calm state nearly restored."
-];
-
-const points=[
-[60,270],[220,225],[380,195],[540,165],[700,145],[840,130]
-];
-
-const slider=document.getElementById("time");
-const dot=document.getElementById("dot");
-const live=document.getElementById("live");
-
-slider.oninput=()=>{
-  const i=slider.value;
-  dot.setAttribute("cx",points[i][0]);
-  dot.setAttribute("cy",points[i][1]);
-  live.textContent=texts[i];
-};
-</script>
 
 </body>
 </html>
