@@ -1,140 +1,154 @@
-/* === COOL STUDY VISUAL UPGRADE === */
+<div class="chart-wrapper cool-graph">
+    <div class="graph-header">
+        <h3>Autonomic Recovery Trajectory</h3>
+        <p>Comparison of HRV recovery following acute cognitive stress</p>
+    </div>
 
-.study-shell {
-    position: relative;
-    padding: 60px 0;
-}
+    <svg viewBox="0 0 800 420" width="100%" height="420">
 
-.study-shell::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+        <!-- DEFINITIONS -->
+        <defs>
+            <linearGradient id="bioFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00f5ff" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#00f5ff" stop-opacity="0"/>
+            </linearGradient>
+
+            <linearGradient id="baseFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ff6b6b" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#ff6b6b" stop-opacity="0"/>
+            </linearGradient>
+
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="4" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+
+        <!-- GRID -->
+        <g stroke="#14263a" stroke-width="1">
+            <line x1="80" y1="340" x2="760" y2="340"/>
+            <line x1="80" y1="260" x2="760" y2="260"/>
+            <line x1="80" y1="180" x2="760" y2="180"/>
+            <line x1="80" y1="100" x2="760" y2="100"/>
+        </g>
+
+        <!-- AXES -->
+        <line x1="80" y1="60" x2="80" y2="340" stroke="#35506b" stroke-width="2"/>
+        <line x1="80" y1="340" x2="760" y2="340" stroke="#35506b" stroke-width="2"/>
+
+        <!-- LABELS -->
+        <g fill="#9fb1c7" font-size="12">
+            <text x="30" y="105">High</text>
+            <text x="30" y="185">HRV</text>
+            <text x="30" y="265">Low</text>
+
+            <text x="140" y="370">0 min</text>
+            <text x="260" y="370">1</text>
+            <text x="380" y="370">2</text>
+            <text x="500" y="370">3</text>
+            <text x="620" y="370">4</text>
+            <text x="720" y="370">5</text>
+        </g>
+
+        <!-- BASELINE AREA -->
+        <path d="
+            M80 300
+            L200 295
+            L320 292
+            L440 290
+            L560 288
+            L680 286
+            L760 285
+            L760 340 L80 340 Z"
+            fill="url(#baseFill)"/>
+
+        <!-- BIOWAVE AREA -->
+        <path d="
+            M80 300
+            L200 260
+            L320 220
+            L440 190
+            L560 160
+            L680 140
+            L760 130
+            L760 340 L80 340 Z"
+            fill="url(#bioFill)"/>
+
+        <!-- BASELINE LINE -->
+        <polyline
+            points="80,300 200,295 320,292 440,290 560,288 680,286 760,285"
+            fill="none"
+            stroke="#ff6b6b"
+            stroke-width="2"
+            stroke-dasharray="6"/>
+
+        <!-- BIOWAVE LINE -->
+        <polyline
+            points="80,300 200,260 320,220 440,190 560,160 680,140 760,130"
+            fill="none"
+            stroke="#00f5ff"
+            stroke-width="4"
+            filter="url(#glow)"/>
+
+        <!-- DATA POINTS -->
+        <g fill="#00f5ff">
+            <circle cx="200" cy="260" r="4"/>
+            <circle cx="320" cy="220" r="4"/>
+            <circle cx="440" cy="190" r="4"/>
+            <circle cx="560" cy="160" r="4"/>
+            <circle cx="680" cy="140" r="4"/>
+        </g>
+
+        <!-- LEGEND -->
+        <g font-size="12">
+            <rect x="520" y="70" width="10" height="10" fill="#00f5ff"/>
+            <text x="540" y="79" fill="#cfefff">BioWave™ Active</text>
+
+            <rect x="520" y="90" width="10" height="10" fill="#ff6b6b"/>
+            <text x="540" y="99" fill="#cfefff">Baseline Recovery</text>
+        </g>
+
+        <!-- ANNOTATION -->
+        <text x="420" y="140" fill="#eaffff" font-size="14" font-weight="600">
+            +22% HRV improvement at 3 minutes
+        </text>
+
+    </svg>
+
+    <p class="graph-note">
+        BioWave™ demonstrates accelerated parasympathetic re-engagement compared
+        to natural recovery, with the largest divergence occurring within the
+        first three minutes post-stress.
+    </p>
+</div>
+
+.cool-graph {
     background:
-        radial-gradient(circle at 20% 10%, rgba(0,245,255,0.12), transparent 40%),
-        radial-gradient(circle at 80% 90%, rgba(0,167,225,0.10), transparent 45%);
-    pointer-events: none;
-}
-
-.study-glass {
-    max-width: 900px;
-    margin: auto;
-    padding: 42px 36px;
-    border-radius: 28px;
-    background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)),
-        radial-gradient(circle at top, #142030, #06090f 70%);
-    border: 1px solid rgba(255,255,255,0.12);
-    backdrop-filter: blur(22px);
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.75),
-        inset 0 0 0 1px rgba(255,255,255,0.05);
-}
-
-/* Headings */
-#study h2 {
-    font-size: 26px;
-    margin-bottom: 18px;
-    background: linear-gradient(90deg, #e9faff, #7deeff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-#study h3 {
-    margin-top: 28px;
-    font-size: 17px;
-    letter-spacing: .04em;
-    color: #e7f2ff;
-}
-
-/* Paragraph rhythm */
-#study p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: #b9c9dd;
-}
-
-/* Lists */
-#study ul, #study ol {
-    margin-left: 20px;
-}
-
-#study li {
-    margin-bottom: 6px;
-}
-
-/* Metric cards – premium */
-.metric-card {
-    position: relative;
-    overflow: hidden;
-}
-
-.metric-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(0,245,255,0.15),
-        transparent
-    );
-    opacity: 0;
-    transition: opacity .4s;
-}
-
-.metric-card:hover::after {
-    opacity: 1;
-}
-
-.metric-card strong {
-    font-size: 22px;
-}
-
-/* Highlight block */
-.highlight {
-    border-radius: 14px;
-    background:
-        linear-gradient(135deg, rgba(0,245,255,0.15), rgba(0,0,0,0.1));
-    box-shadow: inset 0 0 0 1px rgba(0,245,255,0.25);
-}
-
-/* Toggle buttons – futuristic */
-.toggle-btn {
-    transition: all .25s ease;
-}
-
-.toggle-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(0,245,255,.25);
-}
-
-/* Chart glass look */
-.chart-wrapper {
-    background:
-        radial-gradient(circle at top, #0b1b2d, #05070b);
+        radial-gradient(circle at top, #0c1f33, #05070b 70%);
+    border-radius: 22px;
+    padding: 24px;
     box-shadow:
         inset 0 0 0 1px rgba(255,255,255,0.06),
-        0 18px 50px rgba(0,0,0,0.7);
+        0 25px 70px rgba(0,0,0,0.8);
 }
 
-/* Accordion */
-.accordion button {
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    font-size: 12px;
-    color: #9fefff;
+.graph-header h3 {
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: #e9faff;
 }
 
-.accordion-content {
-    padding-top: 10px;
+.graph-header p {
+    font-size: 13px;
+    color: #9fb1c7;
+    margin-bottom: 12px;
 }
 
-/* Subtle scroll animation */
-.study-glass > * {
-    animation: fadeUp .6s ease both;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
+.graph-note {
+    font-size: 13px;
+    color: #a8bdd6;
+    margin-top: 12px;
 }
